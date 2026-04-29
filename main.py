@@ -18,7 +18,6 @@ class MyBot(commands.Bot):
 
     async def setup_hook(self):
         # รัน Flask Server
-        server_on()
         print("✅ Flask server is online!")
         # อัปเดต Slash Commands ไปยัง Discord
         await self.tree.sync()
@@ -220,6 +219,8 @@ async def setup_ticket_slash(interaction: discord.Interaction):
     view = SetupRoleView()
     # ให้เฉพาะคนที่พิมพ์คำสั่งเห็นหน้าต่างเลือก Role
     await interaction.response.send_message("⚙️ **ขั้นตอนการตั้งค่า:** โปรดเลือกตำแหน่ง (Role) ที่ต้องการให้ดูแลระบบ Ticket นี้จากเมนูด้านล่าง:", view=view, ephemeral=True)
+
+server_on()
 
 # รันบอท
 bot.run(os.getenv('TOKEN'))
